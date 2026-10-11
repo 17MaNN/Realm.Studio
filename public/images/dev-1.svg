@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400" aria-labelledby="dev1-title">
+  <title id="dev1-title">Koto Ceramics Project Preview</title>
+  <rect width="300" height="400" fill="#DEE4E9"/>
+  <rect x="20" y="20" width="260" height="360" rx="8" fill="#FFFFFF"/>
+  <circle cx="150" cy="160" r="54" fill="#12202B"/>
+  <circle cx="150" cy="160" r="36" fill="#DEE4E9"/>
+  <rect x="50" y="250" width="200" height="14" rx="4" fill="#12202B"/>
+  <rect x="80" y="275" width="140" height="10" rx="3" fill="#94A3B8"/>
+  <rect x="90" y="315" width="120" height="26" rx="13" fill="#FFD23F"/>
+  <text x="150" y="332" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#12202B" text-anchor="middle">PREVIEW</text>
+</svg>

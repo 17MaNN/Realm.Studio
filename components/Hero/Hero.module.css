@@ -1,0 +1,269 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: clamp(6.5rem, 10vw, 8rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* Soft colour blooms behind the stack, no hard edges */
+.glow {
+  position: absolute;
+  inset: -10%;
+  z-index: -1;
+  background:
+    radial-gradient(46rem 34rem at 80% 30%, color-mix(in srgb, var(--color-accent) 32%, transparent), transparent 72%),
+    radial-gradient(36rem 28rem at 62% 82%, color-mix(in srgb, var(--color-signal) 26%, transparent), transparent 72%),
+    radial-gradient(30rem 24rem at 6% 14%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 72%);
+  filter: blur(24px);
+  animation: bloom 14s ease-in-out infinite alternate;
+}
+
+@keyframes bloom {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-2%, 3%, 0) scale(1.06); }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+}
+
+/* ---------- Copy ---------- */
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  color: var(--color-ink);
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* Each line is revealed from behind a mask; padding keeps descenders visible */
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.line {
+  display: block;
+}
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  padding-inline: 0.18em;
+  line-height: 1;
+}
+
+.mark {
+  position: absolute;
+  inset: 0.04em 0 0.02em 0;
+  background-color: var(--color-signal);
+  border-radius: 10px;
+  transform-origin: left center;
+}
+
+/* Ink-coloured until the yellow wipe lands, then switches to the fixed dark ink */
+.markText {
+  position: relative;
+  z-index: 1;
+  color: var(--color-ink-fixed);
+  animation: inkSwap 0.3s linear 1.15s both;
+}
+
+@keyframes inkSwap {
+  from { color: var(--color-ink); }
+  to { color: var(--color-ink-fixed); }
+}
+
+.subtext {
+  font-size: clamp(1.0625rem, 1.6vw, 1.3125rem);
+  color: var(--color-muted);
+  line-height: 1.5;
+  max-width: 40ch;
+  margin-bottom: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ctaButton,
+.ctaGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.9rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ctaButton {
+  background-color: var(--color-ink);
+  color: var(--color-on-ink);
+  border: 2px solid var(--color-ink);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-ink-hover);
+}
+
+.ctaGhost {
+  background-color: transparent;
+  color: var(--color-ink);
+  border: 2px solid var(--color-border-subtle);
+}
+
+.ctaGhost:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-ink);
+}
+
+/* ---------- Project stack ---------- */
+.stage {
+  perspective: 1400px;
+  position: relative;
+  width: 100%;
+}
+
+.stack {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 0.92;
+  transform-style: preserve-3d;
+}
+
+.layer {
+  position: absolute;
+}
+
+.layerBack {
+  top: 0;
+  right: 0;
+  width: 54%;
+  z-index: 1;
+}
+
+.layerMain {
+  top: 15%;
+  left: 0;
+  width: 86%;
+  z-index: 2;
+}
+
+.layerFront {
+  bottom: 0;
+  right: 2%;
+  width: 56%;
+  z-index: 3;
+}
+
+.drift {
+  animation: drift 7s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: translateY(-5px); }
+  to { transform: translateY(6px); }
+}
+
+.card {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: #0b0d14;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 22%, transparent);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.06) inset,
+    0 30px 60px -20px rgba(8, 14, 24, 0.55),
+    0 12px 24px -12px rgba(8, 14, 24, 0.4);
+  rotate: var(--tilt, 0deg);
+  text-decoration: none;
+  transition: rotate 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  rotate: 0deg;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.06) inset,
+    0 40px 70px -20px rgba(8, 14, 24, 0.65),
+    0 0 0 2px var(--color-signal);
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 1.7rem;
+  padding-inline: 0.7rem;
+  background-color: #161a24;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chrome i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+.chromeTitle {
+  margin-left: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 959px) {
+  .stack {
+    aspect-ratio: 1 / 0.88;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .chromeTitle {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow,
+  .drift {
+    animation: none !important;
+  }
+}

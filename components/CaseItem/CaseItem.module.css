@@ -1,0 +1,113 @@
+.item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  align-items: center;
+  padding-block: clamp(2.5rem, 5.5vw, 4.5rem);
+  /* Thick 2px ink rules between work items */
+  border-top: 2px solid var(--color-ink);
+}
+
+.item:last-child {
+  border-bottom: 2px solid var(--color-ink);
+}
+
+@media (min-width: 768px) {
+  .item {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+
+  /* Alternate column placement */
+  .itemEven {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+
+  .itemEven .mediaCol {
+    order: 2;
+  }
+
+  .itemEven .textCol {
+    order: 1;
+  }
+}
+
+.mediaCol {
+  width: 100%;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  background-color: var(--color-frame);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.summary {
+  font-size: 1.125rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  max-width: 55ch;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--color-tint);
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+
+.caseLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  transition: color 0.15s ease;
+}
+
+.caseLink:hover {
+  color: var(--color-accent);
+}

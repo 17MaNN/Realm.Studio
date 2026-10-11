@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400" aria-labelledby="dev5-title">
+  <title id="dev5-title">Vanguard Transit Project Preview</title>
+  <rect width="300" height="400" fill="#DEE4E9"/>
+  <rect x="20" y="20" width="260" height="360" rx="8" fill="#FFFFFF"/>
+  <path d="M50 200 L150 70 L250 200 Z" fill="#12202B"/>
+  <rect x="50" y="235" width="200" height="14" rx="3" fill="#12202B"/>
+  <rect x="50" y="260" width="160" height="10" rx="3" fill="#94A3B8"/>
+  <rect x="50" y="300" width="110" height="26" rx="13" fill="#1F4FFF"/>
+  <text x="105" y="317" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">METRO MAP</text>
+</svg>

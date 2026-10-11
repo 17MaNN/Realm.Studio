@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   DESIGN TOKENS & CSS VARIABLES
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  /* Brand Palette (light) */
+  --color-bg: #E9EEF2;
+  --color-ink: #12202B;
+  --color-ink-fixed: #12202B;      /* always dark: text on yellow / white */
+  --color-on-ink: #FFFFFF;         /* text on ink-coloured buttons */
+  --color-ink-hover: #0B151D;
+  --color-muted: #4A5B68;
+  --color-accent: #1F4FFF;         /* links, focus, borders */
+  --color-accent-surface: #1F4FFF; /* contact section background */
+  --color-signal: #FFD23F;
+  --color-panel: #12202B;
+  --color-panel-text: #E9EEF2;
+  --color-panel-muted: #A0B0BD;
+  --color-white: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #DDE4EA;
+  --color-frame: #DDE3E8;
+  --color-tint: rgba(18, 32, 43, 0.08);
+  --color-tint-soft: rgba(18, 32, 43, 0.05);
+  --color-header-bg: rgba(233, 238, 242, 0.88);
+  --color-border-subtle: rgba(18, 32, 43, 0.14);
+  --color-shadow: rgba(0, 0, 0, 0.08);
+
+  /* Typography variables provided by next/font/google in app/layout.tsx */
+  --font-display: var(--font-bricolage), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: var(--font-instrument), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Layout & Rhythm */
+  --max-width: 1240px;
+  --vertical-rhythm: clamp(64px, 8.5vw, 140px);
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --radius-image: 14px;
+  --radius-pill: 9999px;
+}
+
+/* Dark palette: explicit toggle */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0B141C;
+  --color-ink: #E9EEF2;
+  --color-on-ink: #0B141C;
+  --color-ink-hover: #FFFFFF;
+  --color-muted: #9FB0BD;
+  --color-accent: #7C9BFF;
+  --color-panel: #14222E;
+  --color-surface: #14222E;
+  --color-surface-hover: #1B2D3C;
+  --color-frame: #14222E;
+  --color-tint: rgba(233, 238, 242, 0.1);
+  --color-tint-soft: rgba(233, 238, 242, 0.06);
+  --color-header-bg: rgba(11, 20, 28, 0.85);
+  --color-border-subtle: rgba(233, 238, 242, 0.16);
+  --color-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* Dark palette: follow the OS unless the user picked light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: #0B141C;
+    --color-ink: #E9EEF2;
+    --color-on-ink: #0B141C;
+    --color-ink-hover: #FFFFFF;
+    --color-muted: #9FB0BD;
+    --color-accent: #7C9BFF;
+    --color-panel: #14222E;
+    --color-surface: #14222E;
+    --color-surface-hover: #1B2D3C;
+    --color-frame: #14222E;
+    --color-tint: rgba(233, 238, 242, 0.1);
+    --color-tint-soft: rgba(233, 238, 242, 0.06);
+    --color-header-bg: rgba(11, 20, 28, 0.85);
+    --color-border-subtle: rgba(233, 238, 242, 0.16);
+    --color-shadow: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ==========================================================================
+   CSS RESET
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-padding-top: 6rem;
+  scroll-behavior: smooth;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 100%;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+}
+
+/* Enforce max line length under 80 characters for body text */
+p {
+  max-width: 68ch;
+  color: inherit;
+}
+
+/* Semantic Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: inherit;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & FOCUS
+   ========================================================================== */
+/* Visible 3px focus outline on all interactive elements */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* High contrast outline against dark backgrounds */
+[data-theme="dark"] :focus-visible,
+.dark-panel :focus-visible {
+  outline: 3px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+/* Skip link to main content */
+.skip-link {
+  position: absolute;
+  top: -120px;
+  left: var(--gutter);
+  background-color: var(--color-ink);
+  color: var(--color-on-ink);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.15s ease-out;
+}
+
+.skip-link:focus {
+  top: 1.25rem;
+  outline: 3px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+/* Screen reader announcement utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Respect prefers-reduced-motion: disable smooth scroll and button lift */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+    transform: none !important;
+  }
+}
+
+/* Global container utility */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}

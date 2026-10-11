@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" aria-labelledby="booking-title">
+  <title id="booking-title">Hakkasan Booking Management System</title>
+  <rect width="800" height="500" fill="#E8EDF2"/>
+  
+  <!-- Outer dashboard frame -->
+  <rect x="25" y="25" width="750" height="450" rx="12" fill="#FFFFFF" stroke="#CCD5DE" stroke-width="2"/>
+  
+  <!-- Top bar -->
+  <rect x="25" y="25" width="750" height="55" rx="12" fill="#12202B"/>
+  <rect x="55" y="44" width="180" height="16" rx="3" fill="#EAF9FF"/>
+  <rect x="420" y="44" width="70" height="20" rx="10" fill="#243C4F"/>
+  <rect x="500" y="44" width="80" height="20" rx="10" fill="#059669"/>
+  <rect x="590" y="44" width="70" height="20" rx="10" fill="#1F4FFF"/>
+  <rect x="670" y="40" width="85" height="26" rx="13" fill="#FFD23F"/>
+
+  <!-- Left: Live Table Floor Plan -->
+  <rect x="50" y="105" width="370" height="340" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <rect x="70" y="125" width="150" height="14" rx="3" fill="#12202B"/>
+  <rect x="290" y="125" width="110" height="18" rx="9" fill="#E2E8F0"/>
+  
+  <!-- Tables Grid Simulation -->
+  <!-- Table Row 1 -->
+  <rect x="75" y="165" width="65" height="65" rx="32.5" fill="#12202B"/>
+  <rect x="85" y="190" width="45" height="12" rx="3" fill="#FFFFFF"/>
+
+  <rect x="160" y="165" width="65" height="65" rx="32.5" fill="#059669"/>
+  <rect x="170" y="190" width="45" height="12" rx="3" fill="#FFFFFF"/>
+
+  <rect x="245" y="165" width="65" height="65" rx="32.5" fill="#1F4FFF"/>
+  <rect x="255" y="190" width="45" height="12" rx="3" fill="#FFFFFF"/>
+
+  <rect x="330" y="165" width="65" height="65" rx="8" fill="#12202B"/>
+  <rect x="340" y="190" width="45" height="12" rx="3" fill="#FFD23F"/>
+
+  <!-- Table Row 2 -->
+  <rect x="75" y="250" width="65" height="65" rx="32.5" fill="#059669"/>
+  <rect x="85" y="275" width="45" height="12" rx="3" fill="#FFFFFF"/>
+
+  <rect x="160" y="250" width="65" height="65" rx="32.5" fill="#12202B"/>
+  <rect x="170" y="275" width="45" height="12" rx="3" fill="#FFFFFF"/>
+
+  <rect x="245" y="250" width="65" height="65" rx="32.5" fill="#12202B"/>
+  <rect x="255" y="275" width="45" height="12" rx="3" fill="#FFFFFF"/>
+
+  <rect x="330" y="250" width="65" height="65" rx="8" fill="#059669"/>
+  <rect x="340" y="275" width="45" height="12" rx="3" fill="#FFFFFF"/>
+
+  <!-- VIP Booth Section -->
+  <rect x="75" y="335" width="150" height="85" rx="10" fill="#0F172A" stroke="#FFD23F" stroke-width="1.5"/>
+  <rect x="95" y="355" width="110" height="14" rx="3" fill="#FFD23F"/>
+  <rect x="95" y="380" width="90" height="10" rx="2" fill="#E2E8F0"/>
+
+  <rect x="245" y="335" width="150" height="85" rx="10" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <rect x="265" y="355" width="110" height="14" rx="3" fill="#38BDF8"/>
+  <rect x="265" y="380" width="90" height="10" rx="2" fill="#E2E8F0"/>
+
+  <!-- Right: Reservation List & Guest Concierge -->
+  <rect x="440" y="105" width="310" height="340" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <rect x="460" y="125" width="160" height="14" rx="3" fill="#12202B"/>
+  <line x1="460" y1="150" x2="730" y2="150" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Reservation 1 -->
+  <rect x="460" y="165" width="270" height="50" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="475" y="177" width="100" height="12" rx="3" fill="#12202B"/>
+  <rect x="475" y="195" width="60" height="8" rx="2" fill="#64748B"/>
+  <rect x="660" y="175" width="60" height="18" rx="9" fill="#ECFDF5"/>
+
+  <!-- Reservation 2 -->
+  <rect x="460" y="225" width="270" height="50" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="475" y="237" width="120" height="12" rx="3" fill="#12202B"/>
+  <rect x="475" y="255" width="70" height="8" rx="2" fill="#64748B"/>
+  <rect x="660" y="235" width="60" height="18" rx="9" fill="#EFF6FF"/>
+
+  <!-- Reservation 3 -->
+  <rect x="460" y="285" width="270" height="50" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="475" y="297" width="110" height="12" rx="3" fill="#12202B"/>
+  <rect x="475" y="315" width="65" height="8" rx="2" fill="#64748B"/>
+  <rect x="660" y="295" width="60" height="18" rx="9" fill="#FEF3C7"/>
+
+  <!-- Reservation 4 -->
+  <rect x="460" y="345" width="270" height="50" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="475" y="357" width="90" height="12" rx="3" fill="#12202B"/>
+  <rect x="475" y="375" width="75" height="8" rx="2" fill="#64748B"/>
+  <rect x="660" y="355" width="60" height="18" rx="9" fill="#ECFDF5"/>
+
+  <!-- Quick Action Dispatch Bar -->
+  <rect x="460" y="405" width="270" height="28" rx="14" fill="#12202B"/>
+</svg>
