@@ -131,7 +131,8 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
               </h2>
               <p className={styles.blockText}>{item.impact}</p>
               <div className={styles.impactHighlight}>
-                Speed, clarity and accessibility resulted in immediate measurable business gains.
+                {item.impactHighlight ??
+                  'Speed, clarity and accessibility resulted in immediate measurable business gains.'}
               </div>
             </section>
           </div>

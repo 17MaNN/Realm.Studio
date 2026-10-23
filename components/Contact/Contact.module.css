@@ -1,54 +1,60 @@
 .section {
   background-color: var(--color-accent-surface);
   color: var(--color-white);
-  padding-block: clamp(4.5rem, 9vw, 8rem);
+  padding-block: clamp(2.5rem, 4.5vw, 3.75rem);
 }
 
 .section :focus-visible {
   outline-color: var(--color-signal);
 }
 
-.cardInner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2.25rem;
+.compact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .compact {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2.5rem;
+  }
 }
 
 .heading {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
-  line-height: 0.98;
+  font-size: clamp(1.9rem, 3.3vw, 3rem);
+  line-height: 1.02;
   font-weight: 800;
   letter-spacing: -0.04em;
   color: var(--color-white);
-  max-width: 15ch;
+  max-width: 20ch;
 }
 
-.ctaRow {
+.lead {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 44ch;
+}
+
+.actions {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .ctaRow {
-    flex-direction: row;
-    align-items: center;
-    gap: 2.5rem;
-  }
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.4rem;
 }
 
 .ctaButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.95rem 2rem;
+  padding: 0.8rem 1.6rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-body);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   background-color: var(--color-white);
@@ -63,16 +69,9 @@
   background-color: #f2f5f8;
 }
 
-.linksGroup {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.75rem;
-  align-items: center;
-}
-
-.linkItem {
+.emailLink {
   color: var(--color-white);
-  font-size: 1.125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -80,6 +79,80 @@
   transition: opacity 0.15s ease;
 }
 
-.linkItem:hover {
+.emailLink:hover {
   opacity: 0.85;
+}
+
+/* ---------- Linktree strip ---------- */
+.linktree {
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.linktreeLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 0.3rem;
+}
+
+.linktreeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease;
+}
+
+.linktreeLink:hover {
+  border-color: var(--color-white);
+}
+
+.quickLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.quickLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: var(--radius-pill);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.quickLink:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: var(--color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaButton:hover {
+    transform: none;
+  }
 }

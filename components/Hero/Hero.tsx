@@ -124,7 +124,7 @@ export default function Hero() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.85, delay: 0.1, ease }}
               >
-                We build sites
+                Websites
               </motion.span>
             </span>
             <span className={styles.mask}>
@@ -142,9 +142,9 @@ export default function Hero() {
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 0.65, delay: 1, ease }}
                   />
-                  <span className={styles.markText}>people</span>
+                  <span className={styles.markText}>worth</span>
                 </span>{' '}
-                can use.
+                the visit.
               </motion.span>
             </span>
           </h1>
@@ -155,8 +155,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease }}
           >
-            An independent design and development studio. We make websites that load fast, look
-            sharp and work for everyone who visits.
+            An independent design and development studio in Gurugram. We design and build fast,
+            characterful websites for restaurants, hospitality brands and teams who care how their
+            product feels.
           </motion.p>
 
           <motion.div
@@ -205,7 +206,7 @@ export default function Hero() {
             <Layer mx={mx} my={my} depth={70} delay={0.65} className={`${styles.layer} ${styles.layerFront}`}>
               <BrowserCard
                 href="/work/instagram-automation/"
-                title="Instagram Automation"
+                title="Instagram Growth"
                 src="/images/work-automation.png"
                 width={912}
                 height={435}

@@ -20,13 +20,13 @@ const instrument = Instrument_Sans({
 
 // TODO: Update description with your studio details
 export const metadata: Metadata = {
-  title: 'Realm.Studio · Design and development studio',
+  title: 'Realm.Studio · Websites worth the visit',
   description:
-    'An independent design and development studio. Websites that are fast, clear and easy for everyone to use.',
+    'An independent design and development studio in Gurugram. Fast, characterful websites for restaurants, hospitality brands and growing teams.',
   openGraph: {
-    title: 'Realm.Studio · Design and development studio',
+    title: 'Realm.Studio · Websites worth the visit',
     description:
-      'An independent design and development studio. Websites that are fast, clear and easy for everyone to use.',
+      'An independent design and development studio in Gurugram. Fast, characterful websites for restaurants, hospitality brands and growing teams.',
     type: 'website',
   },
 };

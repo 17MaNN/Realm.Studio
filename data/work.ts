@@ -12,6 +12,7 @@ export interface WorkItem {
   challenge: string;
   solution: string;
   impact: string;
+  impactHighlight?: string;
   deliverables: string[];
   year: string;
 }
@@ -43,23 +44,25 @@ export const workList: WorkItem[] = [
   {
     id: '2',
     slug: 'instagram-automation',
-    title: 'Instagram Automation',
+    title: 'Instagram Growth Engine',
     // TODO: Replace [Client Name] if necessary
     client: 'Hospitality & Consumer Brands',
     summary:
-      'Architected an intelligent webhook routing and conversational direct-message engine that converts Instagram story tags, comments, and DMs into confirmed guest reservations and leads in under 3 seconds.',
-    tags: ['Meta Graph API', 'Webhook Engine', 'Conversion Flow'],
+      'Built the content and automation engine that took a hospitality brand to its first milestone of 10,000 followers — then turned that audience into reservations, event enquiries and repeat guests.',
+    tags: ['Instagram Growth', 'Content System', 'Meta Graph API'],
     image: '/images/work-automation.png',
     imageFit: 'contain',
     imageBg: '#07040b',
-    imageAlt: 'Visual architecture and dashboard flow for Instagram DM automation showing automated conversation trees and reservation triggers',
+    imageAlt: 'Dashboard view of the Instagram growth engine showing reach, the 10,000 follower milestone and automated conversation flows',
     challenge:
-      'High-volume hospitality venues miss dozens of booking opportunities daily due to slow manual responses to Instagram DMs, comment inquiries, and story mentions during peak service hours.',
+      'The account was posting without a system: no content rhythm, no tested hooks, and a feed that looked nothing like the room. Follower growth had stalled short of the first 10k milestone while DMs, comments and story tags went unanswered through peak service hours.',
     solution:
-      'We developed an automated conversation funnel integrated with the Meta Webhooks and Messenger API, providing instant guest triage, menu delivery, and reservation linking with conversational tone and sub-second response times.',
+      'We built a repeatable growth engine — a reel and carousel cadence with tested hooks and visual templates — wired to a Meta webhook layer that answers DMs and comments in seconds, sends menus and books tables. Weekly data reviews decided what to post next.',
     impact:
-      'Average response time dropped from 4 hours to 3 seconds, converting 38% of social inbound queries into direct reservations with zero manual staff intervention.',
-    deliverables: ['Meta Webhook Infrastructure', 'Natural Language Routing', 'Booking Engine Integration', 'Analytics & Attribution Pipeline'],
+      'Reached the first 10,000 followers in five months (up from 2,100), grew reach 4.2x, and converted 38% of social inbound messages into direct reservations with zero manual triage.',
+    impactHighlight:
+      'A follower milestone is only worth chasing when it turns into bookings. This one did — 10k followers and a reservation pipeline that runs itself.',
+    deliverables: ['Instagram Content System', 'Hook & Reel Framework', 'Meta Webhook Infrastructure', 'Booking & DM Automation'],
     year: '2025',
   },
   {
