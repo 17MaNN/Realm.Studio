@@ -86,7 +86,7 @@ export default function Studio() {
             ))}
           </ul>
 
-          <p className={`hand ${styles.handNote}`}>two projects a month, on purpose</p>
+          <p className={`hand ${styles.handNote}`}>one at a time, start to finish</p>
         </div>
 
         <div className={styles.board} role="group" aria-label="Reference board">
