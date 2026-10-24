@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { WorkItem } from '@/data/work';
+import { tilt } from '@/lib/human';
 import styles from './CaseItem.module.css';
 
 interface CaseItemProps {
@@ -16,7 +17,10 @@ export default function CaseItem({ item, index }: CaseItemProps) {
       <div className={styles.mediaCol}>
         <div
           className={styles.imageFrame}
-          style={item.imageBg ? { backgroundColor: item.imageBg } : undefined}
+          style={{
+            ...(item.imageBg ? { backgroundColor: item.imageBg } : null),
+            rotate: `${tilt(index + 1, 1.1)}deg`,
+          }}
         >
           <Image
             src={item.image}
@@ -35,8 +39,12 @@ export default function CaseItem({ item, index }: CaseItemProps) {
         <p className={styles.summary}>{item.summary}</p>
 
         <ul className={styles.tagList} aria-label={`${item.title} tags`}>
-          {item.tags.map((tag) => (
-            <li key={tag} className={styles.tag}>
+          {item.tags.map((tag, tagIndex) => (
+            <li
+              key={tag}
+              className={styles.tag}
+              style={{ rotate: `${tilt(index * 5 + tagIndex, 1.4)}deg` }}
+            >
               {tag}
             </li>
           ))}

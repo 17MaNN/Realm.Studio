@@ -56,7 +56,7 @@ export default function Studio() {
         <div className={styles.lead}>
           <p className={styles.eyebrow}>
             <span className={styles.dot} aria-hidden="true" />
-            Studio · Gurugram, India
+            Studio · Dehradun, India
           </p>
 
           <h2 id="studio-heading" className={styles.heading}>
@@ -85,6 +85,8 @@ export default function Studio() {
               </li>
             ))}
           </ul>
+
+          <p className={`hand ${styles.handNote}`}>two projects a month, on purpose</p>
         </div>
 
         <div className={styles.board} role="group" aria-label="Reference board">
@@ -112,7 +114,7 @@ export default function Studio() {
             </figure>
           ))}
 
-          <p className={styles.note}>Reference board · imagery via Unsplash</p>
+          <p className={styles.note}>pinned by hand — type, rooms, light</p>
         </div>
       </div>
 

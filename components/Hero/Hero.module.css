@@ -1,4 +1,5 @@
 .section {
+  --gutter-shift: -6px;
   position: relative;
   overflow: hidden;
   isolation: isolate;

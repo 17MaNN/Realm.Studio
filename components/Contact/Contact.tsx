@@ -1,4 +1,5 @@
 import { linktree } from '@/data/links';
+import { Arrow } from '@/components/Doodles/Doodles';
 import styles from './Contact.module.css';
 
 const email = 'hellorealm.studio@gmail.com';
@@ -13,13 +14,20 @@ export default function Contact() {
             <h2 id="contact-heading" className={styles.heading}>
               Have something to build?
             </h2>
-            <p className={styles.lead}>Tell us what you are making. We reply within a day.</p>
+            <p className={styles.lead}>
+              Tell us what you are making. A site, a booking system, or the thing you keep
+              sketching on paper.
+            </p>
           </div>
 
           <div className={styles.actions}>
-            <a href={`mailto:${email}`} className={styles.ctaButton}>
-              Start a project
-            </a>
+            <div className={styles.ctaWrap}>
+              <Arrow className={styles.arrow} />
+              <a href={`mailto:${email}`} className={styles.ctaButton}>
+                Start a project
+              </a>
+              <span className={`hand ${styles.handNote}`}>we reply within a day</span>
+            </div>
             <a href={`mailto:${email}`} className={styles.emailLink}>
               {email}
             </a>

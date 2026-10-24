@@ -1,4 +1,5 @@
 import { diwaliOffer, servicesList } from '@/data/services';
+import { Underline } from '@/components/Doodles/Doodles';
 import styles from './Services.module.css';
 
 const inr = (value: number) => `₹${value.toLocaleString('en-IN')}`;
@@ -11,8 +12,13 @@ export default function Services() {
           <div>
             <p className={styles.eyebrow}>Services &amp; pricing</p>
             <h2 id="services-heading" className={styles.heading}>
-              What we do
+              What we{' '}
+              <span className={styles.underlined}>
+                do
+                <Underline className={styles.underline} />
+              </span>
             </h2>
+            <p className={`hand ${styles.handNote}`}>pick one, or stitch them together</p>
           </div>
 
           <aside className={styles.offer} aria-label="Diwali offer">
@@ -24,13 +30,20 @@ export default function Services() {
               Every service booked before {diwaliOffer.deadline}. Already applied to the prices
               below.
             </p>
+            <p className={`hand ${styles.offerNote}`} aria-hidden="true">
+              yes, really — see ↓
+            </p>
           </aside>
         </div>
 
         <ul className={styles.list}>
           {servicesList.map((service) => (
             <li key={service.id} className={styles.item}>
-              <h3 className={styles.title}>{service.title}</h3>
+              <div className={styles.nameCol}>
+                <h3 className={styles.title}>{service.title}</h3>
+                <p className={styles.subtitle}>{service.subtitle}</p>
+              </div>
+
               <p className={styles.description}>{service.description}</p>
 
               <div className={styles.priceCol}>

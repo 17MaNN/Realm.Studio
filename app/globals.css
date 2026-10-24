@@ -34,6 +34,7 @@
   /* Typography variables provided by next/font/google in app/layout.tsx */
   --font-display: var(--font-bricolage), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-body: var(--font-instrument), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-hand: var(--font-caveat), "Segoe Script", "Bradley Hand", cursive;
 
   /* Layout & Rhythm */
   --max-width: 1240px;
@@ -197,10 +198,28 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Global container utility */
+/* Margin notes: the one place handwriting is allowed */
+.hand {
+  font-family: var(--font-hand);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+/* Global container utility.
+   Each section sets --gutter-shift so its content sits a few pixels off-centre;
+   the two paddings always add up, so nothing overflows. */
 .container {
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-inline: calc(var(--gutter) + var(--gutter-shift, 0px))
+    calc(var(--gutter) - var(--gutter-shift, 0px));
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding-inline: calc(var(--gutter) + var(--gutter-shift, 0px) * 0.45)
+      calc(var(--gutter) - var(--gutter-shift, 0px) * 0.45);
+  }
 }

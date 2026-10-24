@@ -1,14 +1,43 @@
 .section {
+  --gutter-shift: 12px;
   padding-bottom: var(--vertical-rhythm);
+}
+
+.headingRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.1rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
 }
 
 .heading {
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 4.5vw, 4rem);
-  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   color: var(--color-ink);
+}
+
+.underlined {
+  position: relative;
+  display: inline-block;
+}
+
+.underline {
+  position: absolute;
+  left: -3%;
+  bottom: -0.14em;
+  width: 106%;
+  height: 0.14em;
+  color: var(--color-signal);
+  rotate: -1deg;
+}
+
+.headingNote {
+  font-size: 1.45rem;
+  color: var(--color-muted);
+  rotate: -2deg;
 }
 
 .list {

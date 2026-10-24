@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
+import { Bricolage_Grotesque, Caveat, Instrument_Sans } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
@@ -18,15 +18,23 @@ const instrument = Instrument_Sans({
   variable: '--font-instrument',
 });
 
+// Used sparingly for margin notes, so the site reads as drawn on rather than templated
+const caveat = Caveat({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['500', '600'],
+  variable: '--font-caveat',
+});
+
 // TODO: Update description with your studio details
 export const metadata: Metadata = {
   title: 'Realm.Studio · Websites worth the visit',
   description:
-    'An independent design and development studio in Gurugram. Fast, characterful websites for restaurants, hospitality brands and growing teams.',
+    'An independent design and development studio in Dehradun. Fast, characterful websites for restaurants, hospitality brands and growing teams.',
   openGraph: {
     title: 'Realm.Studio · Websites worth the visit',
     description:
-      'An independent design and development studio in Gurugram. Fast, characterful websites for restaurants, hospitality brands and growing teams.',
+      'An independent design and development studio in Dehradun. Fast, characterful websites for restaurants, hospitality brands and growing teams.',
     type: 'website',
   },
 };
@@ -51,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${instrument.variable}`}
+      className={`${bricolage.variable} ${instrument.variable} ${caveat.variable}`}
       suppressHydrationWarning
     >
       <head>

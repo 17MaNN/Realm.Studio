@@ -85,6 +85,10 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           />
         </div>
 
+        {item.imageNote ? (
+          <p className={`hand ${styles.imageNote}`}>{item.imageNote}</p>
+        ) : null}
+
         {/* Narrative Details Grid */}
         <div className={styles.detailsGrid}>
           <aside className={styles.sidebar} aria-label="Project deliverables">

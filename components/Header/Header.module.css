@@ -1,4 +1,4 @@
-/* Floating header: liquid-glass nav pill (centre) + logo chip (right corner) */
+/* Floating header: liquid-glass logo chip (left) + nav pill (centre) */
 .header {
   position: fixed;
   top: calc(0.75rem + env(safe-area-inset-top, 0px));
@@ -63,12 +63,15 @@
   }
 }
 
-/* ---------- Logo chip (right corner) ---------- */
+/* ---------- Logo chip (left corner) ---------- */
 .logo {
-  grid-column: 3;
-  justify-self: end;
+  position: relative;
+  grid-column: 1;
+  justify-self: start;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 0;
   padding: 0.6rem 1.1rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-display);
@@ -77,6 +80,13 @@
   letter-spacing: -0.03em;
   color: var(--color-ink);
   text-decoration: none;
+  transition: min-width 0.42s cubic-bezier(0.4, 0, 0.2, 1), padding 0.42s ease;
+}
+
+/* Monogram state: chip shrinks to the mark */
+.logo[data-compact='true'] {
+  min-width: 4.6rem;
+  padding-inline: 0.7rem;
 }
 
 /* ---------- Nav pill ---------- */

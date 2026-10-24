@@ -12,7 +12,7 @@ export const inDevelopmentList: InDevelopmentItem[] = [
     id: 'koto',
     // TODO: Replace [Project Name] with your real upcoming project name
     name: 'Koto Ceramics',
-    status: 'Coming soon',
+    status: 'Restaurant e-commerce',
     image: '/images/dev-1.svg',
     imageAlt: 'Portrait project mockup for Koto Ceramics bespoke e-commerce store',
   },
@@ -20,7 +20,7 @@ export const inDevelopmentList: InDevelopmentItem[] = [
     id: 'basics',
     // TODO: Replace [Project Name] with your real upcoming project name
     name: 'Basics Journal',
-    status: 'Coming soon',
+    status: 'Editorial publication',
     image: '/images/dev-2.svg',
     imageAlt: 'Portrait project mockup for Basics Journal digital publication',
   },
@@ -28,7 +28,7 @@ export const inDevelopmentList: InDevelopmentItem[] = [
     id: 'helix',
     // TODO: Replace [Project Name] with your real upcoming project name
     name: 'Helix Robotics',
-    status: 'Coming soon',
+    status: 'Technical marketing site',
     image: '/images/dev-3.svg',
     imageAlt: 'Portrait project mockup for Helix Robotics technical marketing site',
   },
@@ -36,7 +36,7 @@ export const inDevelopmentList: InDevelopmentItem[] = [
     id: 'tether',
     // TODO: Replace [Project Name] with your real upcoming project name
     name: 'Tether Audio',
-    status: 'Coming soon',
+    status: 'Product catalogue',
     image: '/images/dev-4.svg',
     imageAlt: 'Portrait project mockup for Tether Audio high-fidelity sound catalog',
   },
@@ -44,7 +44,7 @@ export const inDevelopmentList: InDevelopmentItem[] = [
     id: 'vanguard',
     // TODO: Replace [Project Name] with your real upcoming project name
     name: 'Vanguard Transit',
-    status: 'Coming soon',
+    status: 'Route explorer app',
     image: '/images/dev-5.svg',
     imageAlt: 'Portrait project mockup for Vanguard Transit public route explorer',
   },

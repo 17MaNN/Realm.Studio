@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-labelledby="ig-analytics-title ig-analytics-desc">
+  <title id="ig-analytics-title">Instagram performance dashboard for the growth engine</title>
+  <desc id="ig-analytics-desc">A seven-day analytics view showing 1 million post views, 4,054 profile views, 237 thousand likes, 114 thousand comments and 13 thousand shares, with a reach chart peaking mid-week.</desc>
+
+  <defs>
+    <linearGradient id="reach-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2F7DF6" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#2F7DF6" stop-opacity="0.02" />
+    </linearGradient>
+    <style>
+      .sans { font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+      .display { font-family: "Bricolage Grotesque", "Instrument Sans", -apple-system, sans-serif; }
+      .tab { font-size: 23px; font-weight: 500; fill: #6B7280; }
+      .tab-on { font-size: 23px; font-weight: 700; fill: #111827; }
+      .pill { font-size: 18px; font-weight: 600; fill: #374151; }
+      .pill-on { font-size: 18px; font-weight: 600; fill: #FFFFFF; }
+      .card-label { font-size: 18px; font-weight: 500; fill: #374151; }
+      .card-value { font-size: 40px; font-weight: 800; fill: #111827; letter-spacing: -1.2px; }
+      .card-delta { font-size: 16px; font-weight: 600; fill: #2F7DF6; }
+      .card-delta-off { font-size: 16px; font-weight: 600; fill: #9CA3AF; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="750" fill="#FFFFFF" />
+
+  <!-- Tabs -->
+  <text class="sans tab-on" x="48" y="52">Overview</text>
+  <rect x="46" y="66" width="112" height="4" rx="2" fill="#111827" />
+  <text class="sans tab" x="204" y="52">Content</text>
+  <text class="sans tab" x="342" y="52">Viewers</text>
+  <text class="sans tab" x="490" y="52">Followers</text>
+  <text class="sans tab" x="664" y="52">LIVE</text>
+  <line x1="0" y1="82" x2="1200" y2="82" stroke="#ECEEF0" stroke-width="1" />
+
+  <!-- Date range pills -->
+  <rect x="40" y="102" width="112" height="48" rx="24" fill="#111827" />
+  <text class="sans pill-on" x="96" y="133" text-anchor="middle">7 days</text>
+  <rect x="164" y="102" width="118" height="48" rx="24" fill="#F3F4F6" />
+  <text class="sans pill" x="223" y="133" text-anchor="middle">28 days</text>
+  <rect x="294" y="102" width="118" height="48" rx="24" fill="#F3F4F6" />
+  <text class="sans pill" x="353" y="133" text-anchor="middle">60 days</text>
+  <rect x="424" y="102" width="126" height="48" rx="24" fill="#F3F4F6" />
+  <text class="sans pill" x="487" y="133" text-anchor="middle">365 days</text>
+  <rect x="562" y="102" width="124" height="48" rx="24" fill="#F3F4F6" />
+  <text class="sans pill" x="624" y="133" text-anchor="middle">Custom</text>
+
+  <!-- Section title -->
+  <text class="sans display" x="48" y="208" font-size="27" font-weight="800" fill="#111827">Key metrics</text>
+  <circle cx="224" cy="199" r="9" fill="none" stroke="#9CA3AF" stroke-width="1.5" />
+  <text class="sans" x="224" y="204" font-size="12" font-weight="700" fill="#9CA3AF" text-anchor="middle">i</text>
+  <text class="sans" x="48" y="236" font-size="18" fill="#6B7280">Apr 2 – Apr 8</text>
+
+  <!-- Metric cards: column 1 -->
+  <rect x="48" y="258" width="311" height="110" rx="12" fill="#F7FAFF" stroke="#BFD6F7" stroke-width="1.5" />
+  <text class="sans card-label" x="68" y="288">Post views</text>
+  <text class="sans card-value" x="68" y="334">1M</text>
+  <circle cx="76" cy="351" r="9" fill="#2F7DF6" />
+  <path d="M76 355v-8m0 0-3.5 3.5M76 347l3.5 3.5" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text class="sans card-delta" x="92" y="357">+975K (+3722.6%)</text>
+
+  <rect x="379" y="258" width="311" height="110" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+  <text class="sans card-label" x="399" y="288">Profile views</text>
+  <text class="sans card-value" x="399" y="334">4,054</text>
+  <circle cx="407" cy="351" r="9" fill="#2F7DF6" />
+  <path d="M407 355v-8m0 0-3.5 3.5M407 347l3.5 3.5" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text class="sans card-delta" x="423" y="357">+3,915 (+2816.5%)</text>
+
+  <!-- Metric cards: row 2 -->
+  <rect x="48" y="384" width="311" height="110" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+  <text class="sans card-label" x="68" y="414">Likes</text>
+  <text class="sans card-value" x="68" y="460">237K</text>
+  <circle cx="76" cy="477" r="9" fill="#2F7DF6" />
+  <path d="M76 481v-8m0 0-3.5 3.5M76 473l3.5 3.5" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text class="sans card-delta" x="92" y="483">+235K (+9864.1%)</text>
+
+  <rect x="379" y="384" width="311" height="110" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+  <text class="sans card-label" x="399" y="414">Comments</text>
+  <text class="sans card-value" x="399" y="460">114K</text>
+  <circle cx="407" cy="477" r="9" fill="#2F7DF6" />
+  <path d="M407 481v-8m0 0-3.5 3.5M407 473l3.5 3.5" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text class="sans card-delta" x="423" y="483">+114K (+43227.7%)</text>
+
+  <!-- Metric cards: row 3 -->
+  <rect x="48" y="510" width="311" height="110" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+  <text class="sans card-label" x="68" y="540">Shares</text>
+  <text class="sans card-value" x="68" y="586">13K</text>
+  <circle cx="76" cy="603" r="9" fill="#2F7DF6" />
+  <path d="M76 607v-8m0 0-3.5 3.5M76 599l3.5 3.5" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text class="sans card-delta" x="92" y="609">+13K (+11713.5%)</text>
+
+  <rect x="379" y="510" width="311" height="110" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+  <text class="sans card-label" x="399" y="540">Est. rewards</text>
+  <text class="sans card-value" x="399" y="586">$0.00</text>
+  <text class="sans card-delta-off" x="399" y="609">+$0.00</text>
+
+  <!-- Reach chart -->
+  <text class="sans display" x="740" y="286" font-size="20" font-weight="800" fill="#111827">Reach</text>
+  <text class="sans" x="1158" y="286" font-size="16" fill="#9CA3AF" text-anchor="end">per day</text>
+
+  <line x1="740" y1="330" x2="1158" y2="330" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4 6" />
+  <line x1="740" y1="410" x2="1158" y2="410" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4 6" />
+  <line x1="740" y1="490" x2="1158" y2="490" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4 6" />
+  <line x1="740" y1="570" x2="1158" y2="570" stroke="#E5E7EB" stroke-width="1" />
+  <text class="sans" x="1158" y="324" font-size="14" fill="#9CA3AF" text-anchor="end">552K</text>
+  <text class="sans" x="1158" y="404" font-size="14" fill="#9CA3AF" text-anchor="end">368K</text>
+  <text class="sans" x="1158" y="484" font-size="14" fill="#9CA3AF" text-anchor="end">184K</text>
+
+  <path d="M752 556 L820 470 L890 336 L960 452 L1030 552 L1100 556 L1150 554 L1150 570 L752 570 Z" fill="url(#reach-fill)" />
+  <path d="M752 556 L820 470 L890 336 L960 452 L1030 552 L1100 556 L1150 554" fill="none" stroke="#2F7DF6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+  <circle cx="752" cy="556" r="4" fill="#FFFFFF" stroke="#2F7DF6" stroke-width="2.5" />
+  <circle cx="820" cy="470" r="4" fill="#FFFFFF" stroke="#2F7DF6" stroke-width="2.5" />
+  <circle cx="890" cy="336" r="5.5" fill="#FFFFFF" stroke="#2F7DF6" stroke-width="3" />
+  <circle cx="960" cy="452" r="4" fill="#FFFFFF" stroke="#2F7DF6" stroke-width="2.5" />
+  <circle cx="1030" cy="552" r="4" fill="#FFFFFF" stroke="#2F7DF6" stroke-width="2.5" />
+  <circle cx="1100" cy="556" r="4" fill="#FFFFFF" stroke="#2F7DF6" stroke-width="2.5" />
+  <circle cx="1150" cy="554" r="4" fill="#FFFFFF" stroke="#2F7DF6" stroke-width="2.5" />
+
+  <text class="sans" x="752" y="600" font-size="15" fill="#9CA3AF">Apr 2</text>
+  <text class="sans" x="1150" y="600" font-size="15" fill="#9CA3AF" text-anchor="end">Apr 8</text>
+
+  <!-- Traffic source strip -->
+  <line x1="48" y1="646" x2="1152" y2="646" stroke="#ECEEF0" stroke-width="1" />
+  <text class="sans display" x="48" y="688" font-size="22" font-weight="800" fill="#111827">Traffic source</text>
+  <rect x="262" y="668" width="150" height="34" rx="17" fill="#EEF4FF" />
+  <text class="sans" x="337" y="691" font-size="16" font-weight="600" fill="#2F7DF6" text-anchor="middle">For You · 92%</text>
+  <rect x="426" y="668" width="128" height="34" rx="17" fill="#F3F4F6" />
+  <text class="sans" x="490" y="691" font-size="16" font-weight="600" fill="#4B5563" text-anchor="middle">Search · 5%</text>
+  <rect x="568" y="668" width="128" height="34" rx="17" fill="#F3F4F6" />
+  <text class="sans" x="632" y="691" font-size="16" font-weight="600" fill="#4B5563" text-anchor="middle">Profile · 3%</text>
+
+  <text class="sans" x="1152" y="691" font-size="15" fill="#9CA3AF" text-anchor="end">Account insights · last 7 days</text>
+</svg>

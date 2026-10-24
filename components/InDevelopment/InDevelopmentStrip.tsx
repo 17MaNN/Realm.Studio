@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { InDevelopmentItem } from '@/data/inDevelopment';
+import { Underline } from '@/components/Doodles/Doodles';
 import styles from './InDevelopment.module.css';
 
 interface InDevelopmentStripProps {
@@ -21,15 +22,25 @@ export default function InDevelopmentStrip({ items }: InDevelopmentStripProps) {
   return (
     <>
       <div className={styles.headerRow}>
-        <h2 id="in-development-heading" className={styles.heading}>
-          In development
-        </h2>
+        <div>
+          <p className={styles.eyebrow}>Currently building</p>
+          <h2 id="in-development-heading" className={styles.heading}>
+            In the{' '}
+            <span className={styles.underlined}>
+              workshop
+              <Underline className={styles.underline} />
+            </span>
+          </h2>
+          <p className={styles.subline}>
+            Restaurant websites, booking systems and hospitality brand sites, mid-build.
+          </p>
+        </div>
 
         <div className={styles.controls} aria-label="Carousel navigation">
           <button
             type="button"
             className={styles.scrollButton}
-            onClick={() => scrollByAmount(-320)}
+            onClick={() => scrollByAmount(-260)}
             aria-label="Scroll left in development items"
           >
             ←
@@ -37,7 +48,7 @@ export default function InDevelopmentStrip({ items }: InDevelopmentStripProps) {
           <button
             type="button"
             className={styles.scrollButton}
-            onClick={() => scrollByAmount(320)}
+            onClick={() => scrollByAmount(260)}
             aria-label="Scroll right in development items"
           >
             →
@@ -61,7 +72,7 @@ export default function InDevelopmentStrip({ items }: InDevelopmentStripProps) {
                 width={300}
                 height={400}
                 className={styles.image}
-                sizes="(max-width: 640px) 240px, 290px"
+                sizes="(max-width: 640px) 180px, 215px"
               />
             </div>
             <div className={styles.caption}>

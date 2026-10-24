@@ -1,4 +1,5 @@
 .footer {
+  --gutter-shift: -5px;
   background-color: var(--color-bg);
   border-top: 1px solid var(--color-border-subtle);
   padding-block: 2.5rem;
@@ -17,6 +18,12 @@
   .inner {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
   }
+}
+
+.signature {
+  font-size: 1.3rem;
+  color: var(--color-muted);
+  rotate: -0.8deg;
 }

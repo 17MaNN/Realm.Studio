@@ -7,7 +7,9 @@ export default function Footer() {
         <div className={styles.inner}>
           <p>© 2026 Realm.Studio. All rights reserved.</p>
 
-          <p>Gurugram, India</p>
+          <p className={`hand ${styles.signature}`}>drawn and coded by hand, in Dehradun</p>
+
+          <p>Dehradun, India</p>
         </div>
       </div>
     </footer>

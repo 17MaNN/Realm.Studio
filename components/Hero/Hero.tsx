@@ -155,7 +155,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease }}
           >
-            An independent design and development studio in Gurugram. We design and build fast,
+            An independent design and development studio in Dehradun. We design and build fast,
             characterful websites for restaurants, hospitality brands and teams who care how their
             product feels.
           </motion.p>
@@ -207,10 +207,10 @@ export default function Hero() {
               <BrowserCard
                 href="/work/instagram-automation/"
                 title="Instagram Growth"
-                src="/images/work-automation.png"
-                width={912}
-                height={435}
-                alt="Automation workflow with an AI agent routing new users to Slack and Jira"
+                src="/images/work-instagram-analytics.svg"
+                width={1200}
+                height={750}
+                alt="Seven-day analytics dashboard for the Instagram growth engine"
                 tilt="2.5deg"
               />
             </Layer>

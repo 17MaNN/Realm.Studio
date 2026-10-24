@@ -1,4 +1,5 @@
 .pageContainer {
+  --gutter-shift: 9px;
   padding-top: clamp(2.5rem, 5vw, 4.5rem);
   padding-bottom: var(--vertical-rhythm);
 }
@@ -89,6 +90,14 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.imageNote {
+  margin-top: -1.4rem;
+  margin-bottom: 0;
+  font-size: 1.3rem;
+  color: var(--color-muted);
+  rotate: -0.8deg;
 }
 
 .detailsGrid {
