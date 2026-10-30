@@ -224,6 +224,31 @@
   color: var(--color-accent);
 }
 
+/* Booking action, sitting directly under the price */
+.priceCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.7rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-ink);
+  color: var(--color-on-ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 2px solid var(--color-ink);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.priceCta:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-ink-hover);
+  border-color: var(--color-ink-hover);
+}
+
 .footnote {
   margin-top: 1.25rem;
   font-size: 0.875rem;
@@ -242,5 +267,9 @@
   .offer:hover .offerNote,
   .offer:focus-within .offerNote {
     rotate: -0.6deg;
+  }
+
+  .priceCta:hover {
+    transform: none;
   }
 }

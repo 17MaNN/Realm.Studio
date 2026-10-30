@@ -1,5 +1,6 @@
 import { linktree } from '@/data/links';
 import { Arrow } from '@/components/Doodles/Doodles';
+import ContactForm from './ContactForm';
 import styles from './Contact.module.css';
 
 const email = 'hellorealm.studio@gmail.com';
@@ -32,6 +33,10 @@ export default function Contact() {
               {email}
             </a>
           </div>
+        </div>
+
+        <div className={styles.formWrap}>
+          <ContactForm whatsapp={phones[0].replace('+', '')} />
         </div>
 
         <div className={styles.linktree}>

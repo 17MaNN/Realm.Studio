@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { diwaliOffer, servicesList } from '@/data/services';
 import { Underline } from '@/components/Doodles/Doodles';
 import styles from './Services.module.css';
@@ -56,6 +57,13 @@ export default function Services() {
                 <span className={styles.priceNote}>
                   Diwali price · save {inr(diwaliOffer.discount)}
                 </span>
+                <Link
+                  href="#contact"
+                  className={styles.priceCta}
+                  aria-label={`Book your first website — ${service.title}`}
+                >
+                  Book your first website
+                </Link>
               </div>
             </li>
           ))}

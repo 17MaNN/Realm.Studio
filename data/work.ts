@@ -20,7 +20,7 @@ export interface WorkItem {
 }
 
 // TODO: Replace case study records with your studio's client work
-export const workList: WorkItem[] = [
+const caseStudies: WorkItem[] = [
   {
     id: '1',
     slug: 'hakkasan-mumbai-website',
@@ -90,4 +90,62 @@ export const workList: WorkItem[] = [
     deliverables: ['Concierge Dashboard UI', 'Floor Plan Visualizer', 'SMS / WhatsApp Notification Dispatch', 'VIP Guest Profile Index'],
     year: '2026',
   },
+  {
+    id: '4',
+    slug: 'amrithya-restaurant-website',
+    title: 'Amrithya — The Eternal Dining',
+    client: 'Amrithya, Jakhan · Dehradun',
+    summary:
+      'A fine-dining room in Dehradun that needed a site as unhurried as the evening it sells. Warm serif type, one gold reservation prompt, and nothing on the page competing with the food.',
+    tags: ['Fine Dining', 'Editorial Design', 'Reservation Flow'],
+    image: '/images/workamrithya.webp',
+    imageFit: 'cover',
+    imageAlt:
+      'Amrithya homepage: a server carrying a salad bowl and bruschetta through a warm dining room, behind the serif headline A moment that stays. and a gold Reserve a Table button',
+    imageNote: 'the whole idea in two words — a moment',
+    challenge:
+      'The restaurant was new to Dehradun and had to explain an unfamiliar idea — dining as an occasion rather than a meal — before guests had tasted anything. The usual template approach would have put a logo, a menu grid and a phone number in a row and left the personality out entirely.',
+    solution:
+      'We built the site around a single line, “A moment that stays,” set in a slow editorial serif and paced across full-height screens. Photography carries the room, a restrained gold accent carries the reservation prompt, and every other element is held back so the location, the menu and the booking sit exactly where a guest looks for them.',
+    impact:
+      'Guests now arrive having already read the room and the menu, so the first conversation at the table is about the evening rather than logistics. Reservations, private-dining and press enquiries all land in one place instead of three phone lines.',
+    impactHighlight:
+      'A restaurant site only works if it sells the evening before the guest sits down. This one does it in one sentence.',
+    deliverables: ['Art Direction', 'Editorial Layout System', 'Reservation Flow', 'Menu & Events Templates'],
+    year: '2026',
+  },
+  {
+    id: '5',
+    slug: 'sosoru-restaurant-bar-website',
+    title: 'Sosoru — Pan-Asian Restaurant & Bar',
+    client: 'Sosoru, Rajpur Road · Dehradun',
+    summary:
+      'Timber beams, kumiko screens and low warm light on Rajpur Road. The site keeps the room’s hush — a cream panel over the interior, a menu that reads slowly, and one clear way to reserve.',
+    tags: ['Restaurant & Bar', 'Visual Direction', 'Booking Links'],
+    image: '/images/worksosoru.webp',
+    imageFit: 'cover',
+    imageAlt:
+      'Sosoru homepage: a cream panel with the headline A quieter kind of feast over a timber dining room with kumiko screens',
+    imageNote: 'warm light, slow menu, one obvious button',
+    challenge:
+      'The room is quiet and considered, but the old web presence was a grid of dishes with no sense of the space. Guests were arriving expecting a takeaway counter, and the phone rang all evening with the same four questions about timing, parking and the bar.',
+    solution:
+      'We led with the interior rather than the food, then floated a plain cream panel over it holding the name, the address, a short description and two buttons: reserve a table, or read the menu. Sushi, robata, ramen and sake are introduced in a single line, so the menu stays a menu and not a brochure.',
+    impact:
+      'The site now answers the timing, location and bar questions before guests pick up the phone, and reservations arrive through the same booking link the floor staff already use — no second dashboard to check.',
+    impactHighlight:
+      'The first fold does the work of the host: it sets the tone, gives the address and takes the booking.',
+    deliverables: ['Visual Direction', 'Menu System', 'Reservation Integration', 'Gallery & Press Kit'],
+    year: '2026',
+  },
 ];
+
+// The newest reference builds lead the list; the rest keep their original order
+const leadSlugs = ['sosoru-restaurant-bar-website', 'amrithya-restaurant-website'];
+
+const leadIndex = (item: WorkItem) => {
+  const index = leadSlugs.indexOf(item.slug);
+  return index === -1 ? leadSlugs.length : index;
+};
+
+export const workList: WorkItem[] = [...caseStudies].sort((a, b) => leadIndex(a) - leadIndex(b));
