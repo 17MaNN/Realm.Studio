@@ -62,7 +62,7 @@ export default function Services() {
                   className={styles.priceCta}
                   aria-label={`Book your first website — ${service.title}`}
                 >
-                  Book your first website
+                  Book your first Service
                 </Link>
               </div>
             </li>
