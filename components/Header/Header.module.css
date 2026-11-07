@@ -1,4 +1,4 @@
-/* Floating header: liquid-glass logo chip (left) + nav pill (centre) */
+/* Floating header: glass nav pill (left) · logo chip (centre) · glass nav pill (right) */
 .header {
   position: fixed;
   top: calc(0.75rem + env(safe-area-inset-top, 0px));
@@ -6,8 +6,10 @@
   right: 0;
   z-index: 500;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  /* Equal side tracks keep the logo dead centre, whatever the pills weigh */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
+  column-gap: 0.6rem;
   padding-inline: var(--gutter);
   pointer-events: none; /* only the glass bits catch clicks */
   /* One shared height for every glass chip, so the logo and the nav pill sit
@@ -66,11 +68,17 @@
   }
 }
 
-/* ---------- Logo chip (left corner) ---------- */
+/* The two nav lists are the layout items; the nav element itself is a shell */
+.nav {
+  display: contents;
+}
+
+/* ---------- Logo chip (centre) ---------- */
 .logo {
   position: relative;
-  grid-column: 1;
-  justify-self: start;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -93,19 +101,30 @@
   padding-inline: 0.7rem;
 }
 
-/* ---------- Nav pill ---------- */
+/* ---------- Nav pills, either side of the logo ---------- */
 .pill {
-  grid-column: 2;
-  height: var(--chip-height);
-  padding: 0.4rem;
-  border-radius: var(--radius-pill);
-}
-
-.items {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  height: var(--chip-height);
+  margin: 0;
+  padding: 0.4rem;
+  border-radius: var(--radius-pill);
   list-style: none;
+  pointer-events: auto;
+}
+
+/* Left pill hugs the logo from the left, right pill from the right */
+.pillLeft {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.pillRight {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
 }
 
 .item {
@@ -181,23 +200,73 @@
   height: 1.25rem;
 }
 
-/* Small screens: pill only, centred; brand chip hidden to save room */
+/* ---------- Phones: same three-part row, everything shrunk to fit ---------- */
 @media (max-width: 860px) {
-  .logo {
-    display: none;
+  .header {
+    column-gap: 0.4rem;
   }
+
   .pill {
-    grid-column: 1 / -1;
-    justify-self: center;
+    padding: 0.3rem;
+  }
+
+  .pill {
+    gap: 0.15rem;
+  }
+
+  .logo {
+    min-width: 3.7rem;
+    padding-inline: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .item {
+    height: 2.25rem;
+    min-width: 2.25rem;
+    padding-inline: 0.5rem;
+  }
+
+  .item svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .themeToggle {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  /* No room for the active label here — the fill alone marks the section */
+  .itemActive .label {
+    max-width: 0;
+    margin-left: 0;
+    opacity: 0;
   }
 }
 
 @media (max-width: 380px) {
-  .item {
-    min-width: 2.5rem;
-    padding-inline: 0.65rem;
+  .header {
+    column-gap: 0.2rem;
   }
+
+  .pill {
+    gap: 0.1rem;
+    padding: 0.25rem;
+  }
+
+  .item {
+    min-width: 1.9rem;
+    padding-inline: 0.35rem;
+  }
+
+  .logo {
+    min-width: 3.2rem;
+    padding-inline: 0.4rem;
+    font-size: 0.9rem;
+  }
+
   .themeToggle {
-    width: 2.5rem;
+    width: 1.9rem;
+    height: 1.9rem;
   }
 }

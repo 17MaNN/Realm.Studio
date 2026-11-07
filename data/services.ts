@@ -43,10 +43,3 @@ export const servicesList: ServiceItem[] = [
     price: 45000,
   },
 ];
-
-// TODO: Update the deadline if you extend the offer
-export const diwaliOffer = {
-  label: 'Diwali offer',
-  discount: 2000,
-  deadline: '15 November 2026',
-};

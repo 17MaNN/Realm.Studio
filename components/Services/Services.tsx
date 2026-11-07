@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { diwaliOffer, servicesList } from '@/data/services';
+import { servicesList } from '@/data/services';
 import { Underline } from '@/components/Doodles/Doodles';
 import styles from './Services.module.css';
 
@@ -21,20 +20,6 @@ export default function Services() {
             </h2>
             <p className={`hand ${styles.handNote}`}>pick one, or stitch them together</p>
           </div>
-
-          <aside className={styles.offer} aria-label="Diwali offer">
-            <p className={styles.offerBadge}>
-              <span aria-hidden="true">✦</span> {diwaliOffer.label}
-            </p>
-            <p className={styles.offerAmount}>Flat {inr(diwaliOffer.discount)} off</p>
-            <p className={styles.offerCopy}>
-              Every service booked before {diwaliOffer.deadline}. Already applied to the prices
-              below.
-            </p>
-            <p className={`hand ${styles.offerNote}`} aria-hidden="true">
-              yes, really — see ↓
-            </p>
-          </aside>
         </div>
 
         <ul className={styles.list}>
@@ -48,22 +33,15 @@ export default function Services() {
               <p className={styles.description}>{service.description}</p>
 
               <div className={styles.priceCol}>
-                <span className={styles.priceNow}>
-                  {inr(service.price - diwaliOffer.discount)}
-                </span>
-                <span className={styles.priceOld}>
-                  from <s>{inr(service.price)}</s>
-                </span>
-                <span className={styles.priceNote}>
-                  Diwali price · save {inr(diwaliOffer.discount)}
-                </span>
-                <Link
+                <span className={styles.priceNow}>{inr(service.price)}</span>
+                <span className={styles.priceLabel}>starting from</span>
+                <a
                   href="#contact"
                   className={styles.priceCta}
                   aria-label={`Book your first website — ${service.title}`}
                 >
                   Book your first website
-                </Link>
+                </a>
               </div>
             </li>
           ))}

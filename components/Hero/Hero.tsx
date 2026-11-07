@@ -166,15 +166,15 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7, ease }}
           >
-            <Link href="#contact" className={styles.ctaButton}>
+            <a href="#contact" className={styles.ctaButton}>
               Book your free reference site
-            </Link>
-            <Link href="#work" className={styles.ctaGhost}>
+            </a>
+            <a href="#work" className={styles.ctaGhost}>
               See selected work
-            </Link>
-            <Link href="#contact" className={styles.ctaGhost}>
+            </a>
+            <a href="#contact" className={styles.ctaGhost}>
               Start a project
-            </Link>
+            </a>
           </motion.div>
         </div>
 

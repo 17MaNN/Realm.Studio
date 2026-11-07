@@ -76,6 +76,21 @@ a:focus-visible .word .char:nth-child(even) {
   transform: none;
 }
 
+/* Narrow phones: the chip has no room for the full wordmark, so the
+   monogram stands in for it from the start */
+@media (max-width: 640px) {
+  .word {
+    max-width: 0;
+    opacity: 0;
+  }
+
+  .monogram {
+    font-size: 1.05rem;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .word,
   .monogram {

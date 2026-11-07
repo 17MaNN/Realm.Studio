@@ -59,73 +59,6 @@
   rotate: -1.2deg;
 }
 
-/* ---------- Diwali offer ---------- */
-.offer {
-  background-color: var(--color-signal);
-  color: var(--color-ink-fixed);
-  border: 1px solid color-mix(in srgb, var(--color-ink-fixed) 20%, transparent);
-  border-radius: 14px;
-  padding: 1rem 1.25rem 1.1rem;
-  max-width: 24rem;
-  box-shadow: 0 18px 36px -24px rgba(0, 0, 0, 0.55);
-  rotate: -1deg;
-  transition: rotate 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-    translate 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease;
-  will-change: rotate, translate;
-}
-
-.offer:hover,
-.offer:focus-within {
-  rotate: 1.6deg;
-  translate: 0 -6px;
-  box-shadow: 0 30px 48px -22px rgba(0, 0, 0, 0.6);
-}
-
-.offer:hover .offerNote,
-.offer:focus-within .offerNote {
-  rotate: 2.5deg;
-}
-
-.offerBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-
-.offerBadge span {
-  font-size: 0.9rem;
-  line-height: 1;
-}
-
-.offerAmount {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 0.35rem;
-}
-
-.offerCopy {
-  font-size: 0.875rem;
-  line-height: 1.45;
-  color: color-mix(in srgb, var(--color-ink-fixed) 78%, transparent);
-  max-width: 36ch;
-}
-
-.offerNote {
-  margin-top: 0.5rem;
-  font-size: 1.15rem;
-  color: color-mix(in srgb, var(--color-ink-fixed) 70%, transparent);
-  rotate: -0.6deg;
-  transition: rotate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
 /* ---------- Service rows ---------- */
 .list {
   list-style: none;
@@ -206,22 +139,13 @@
   color: var(--color-ink);
 }
 
-.priceOld {
-  font-size: 0.875rem;
-  color: var(--color-muted);
-}
-
-.priceOld s {
-  text-decoration-thickness: 1.5px;
-}
-
-.priceNote {
-  margin-top: 0.15rem;
+.priceLabel {
+  margin-top: 0.1rem;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-muted);
 }
 
 /* Booking action, sitting directly under the price */
@@ -257,18 +181,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .offer,
-  .offer:hover,
-  .offer:focus-within {
-    rotate: -1deg;
-    translate: none;
-  }
-
-  .offer:hover .offerNote,
-  .offer:focus-within .offerNote {
-    rotate: -0.6deg;
-  }
-
   .priceCta:hover {
     transform: none;
   }
