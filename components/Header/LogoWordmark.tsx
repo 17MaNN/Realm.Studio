@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import type { CSSProperties } from 'react';
 import styles from './LogoWordmark.module.css';
@@ -12,6 +13,7 @@ interface LogoWordmarkProps {
 }
 
 export default function LogoWordmark({ className = '' }: LogoWordmarkProps) {
+  const pathname = usePathname();
   const [compact, setCompact] = useState(false);
 
   // Once the hero has mostly scrolled past, the full wordmark folds into a monogram
@@ -41,6 +43,15 @@ export default function LogoWordmark({ className = '' }: LogoWordmarkProps) {
       className={className}
       data-compact={compact ? 'true' : 'false'}
       aria-label="Realm.Studio homepage"
+      // The logo is the home state: from the home page it scrolls back up
+      // and drops the section hash, so no nav item stays selected
+      onClick={() => {
+        if (pathname !== '/') return;
+        if (window.location.hash) {
+          window.history.replaceState(null, '', '/');
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }}
     >
       <span className={styles.word} aria-hidden="true">
         {WORDMARK.split('').map((char, index) => (

@@ -53,27 +53,62 @@ const rightItems: NavItem[] = [
   { id: 'contact', label: 'Contact', href: '#contact' },
 ];
 
-const sectionIds = [...leftItems, ...rightItems].map((item) => item.id);
+const sectionIds: string[] = [...leftItems, ...rightItems].map((item) => item.id);
 
 export default function NavBar() {
   const pathname = usePathname();
-  const [active, setActive] = useState<string>('work');
   const onHome = pathname === '/';
+  // Home is the logo, so the nav opens with nothing selected
+  const [active, setActive] = useState<string>('');
 
-  // Highlight the section crossing the middle of the viewport
+  // Highlight whichever section has reached the reading line. Nothing is
+  // selected while the hero is on screen, which keeps the logo as "home".
   useEffect(() => {
-    if (!onHome) return;
-    const els = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => !!el);
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
-      },
-      { rootMargin: '-45% 0px -50% 0px' }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    if (!onHome) {
+      setActive('');
+      return;
+    }
+
+    let frame = 0;
+
+    const sync = () => {
+      frame = 0;
+      const line = window.scrollY + window.innerHeight * 0.45;
+
+      if (window.location.hash) {
+        // A direct #hash link should show its own section straight away
+        const hashId = window.location.hash.slice(1);
+        if (sectionIds.includes(hashId)) {
+          const el = document.getElementById(hashId);
+          if (el && el.getBoundingClientRect().top < window.innerHeight) {
+            setActive(hashId);
+            return;
+          }
+        }
+      }
+
+      let current = '';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= line) current = id;
+      }
+      setActive(current);
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(sync);
+    };
+
+    sync();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, [onHome]);
 
   // Arriving on the home page with a #hash (e.g. /#work from a case study)
@@ -88,10 +123,8 @@ export default function NavBar() {
     return () => window.clearTimeout(timer);
   }, [onHome]);
 
-  const current = pathname.startsWith('/work') ? 'work' : active;
-
   const renderItem = (item: NavItem) => {
-    const isActive = current === item.id;
+    const isActive = active === item.id;
     const className = `${styles.item} ${isActive ? styles.itemActive : ''}`;
     const inner = (
       <>
@@ -120,8 +153,8 @@ export default function NavBar() {
             className={className}
             aria-current={isActive ? 'location' : undefined}
             title={item.label}
-            // The URL already carries this hash, so the browser would ignore the
-            // click and leave the reader wherever they scrolled to
+            // The URL may already carry this hash, in which case the browser
+            // ignores the click and leaves the reader where they scrolled to
             onClick={(event) => {
               if (window.location.hash !== item.href) return;
               event.preventDefault();
