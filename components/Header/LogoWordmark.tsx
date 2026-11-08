@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './LogoWordmark.module.css';
@@ -29,9 +30,15 @@ export default function LogoWordmark({ className = '', onNavigate }: LogoWordmar
         window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
       }}
     >
-      <span className={styles.wordmark}>
-        Realm<span className={styles.dot}>.</span>Studio
-      </span>
+      <Image
+        src="/images/realm-studio-logo.png"
+        alt=""
+        width={313}
+        height={198}
+        priority
+        sizes="(max-width: 899px) 52px, 60px"
+        className={styles.image}
+      />
     </Link>
   );
 }
