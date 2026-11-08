@@ -1,272 +1,337 @@
-/* Floating header: glass nav pill (left) · logo chip (centre) · glass nav pill (right) */
+/* ==========================================================================
+   SITE HEADER
+   Links on the left, the wordmark dead centre, links + theme on the right.
+   Below 900px the links fold into a full-screen menu while the wordmark keeps
+   its exact centre position.
+   ========================================================================== */
+
 .header {
+  --header-height: 4.25rem;
+
   position: fixed;
-  top: calc(0.75rem + env(safe-area-inset-top, 0px));
+  top: 0;
   left: 0;
   right: 0;
   z-index: 500;
-  display: grid;
-  /* Equal side tracks keep the logo dead centre, whatever the pills weigh */
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  column-gap: 0.6rem;
-  padding-inline: var(--gutter);
-  pointer-events: none; /* only the glass bits catch clicks */
-  /* One shared height for every glass chip, so the logo and the nav pill sit
-     level: 2.75rem control + 0.4rem padding either side + 1px border either side */
-  --chip-height: calc(3.55rem + 2px);
+  padding-top: env(safe-area-inset-top, 0px);
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: border-color 0.3s ease;
 }
 
-.header > * {
-  pointer-events: auto;
-}
-
-/* ---------- Liquid glass ---------- */
-.glass {
-  position: relative;
-  isolation: isolate;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--color-bg) 55%, transparent),
-    color-mix(in srgb, var(--color-bg) 28%, transparent)
-  );
-  -webkit-backdrop-filter: blur(22px) saturate(180%) brightness(1.05);
-  backdrop-filter: blur(22px) saturate(180%) brightness(1.05);
-  border: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 0 22px rgba(255, 255, 255, 0.07),
-    0 10px 34px rgba(0, 0, 0, 0.2);
-}
-
-/* Specular rim highlight */
-.glass::before {
+/* Liquid glass lives on a pseudo-element so the fixed mobile panel is not
+   trapped by a backdrop-filter containing block. */
+.header::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: inherit;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-bg) 66%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg) 40%, transparent) 100%
+  );
+  -webkit-backdrop-filter: blur(24px) saturate(185%) brightness(1.06);
+  backdrop-filter: blur(24px) saturate(185%) brightness(1.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 14px 36px -26px rgba(0, 0, 0, 0.45);
+}
+
+/* Specular rim: a 1px catch of light along the glass edge */
+.header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   padding: 1px;
   background: linear-gradient(
     160deg,
-    rgba(255, 255, 255, 0.75),
-    rgba(255, 255, 255, 0) 35%,
-    rgba(255, 255, 255, 0) 65%,
-    rgba(255, 255, 255, 0.35)
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0) 32%,
+    rgba(255, 255, 255, 0) 68%,
+    rgba(255, 255, 255, 0.2)
   );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   opacity: 0.55;
   pointer-events: none;
-  z-index: -1;
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass {
+  .header::before {
     background: var(--color-bg);
   }
 }
 
-/* The two nav lists are the layout items; the nav element itself is a shell */
-.nav {
-  display: contents;
+/* Three equal side tracks keep the wordmark in the exact centre of the page,
+   whatever the links on either side weigh. */
+.bar {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(0.5rem, 2vw, 1.5rem);
+  min-height: var(--header-height);
 }
 
-/* ---------- Logo chip (centre) ---------- */
-.logo {
+/* ---------- Desktop links ---------- */
+.group {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.groupLeft {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+}
+
+.groupRight {
+  gap: 0.125rem;
+}
+
+.link {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.22s ease;
+}
+
+.link:hover,
+.link:focus-visible,
+.link[aria-current='location'] {
+  color: var(--color-ink);
+}
+
+/* Width (not transform) animates the underline so reduced-motion users still
+   get the resting state instead of a permanently drawn line. */
+.linkLabel {
+  position: relative;
+  display: inline-block;
+}
+
+.linkLabel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.3rem;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link:hover .linkLabel::after,
+.link:focus-visible .linkLabel::after,
+.link[aria-current='location'] .linkLabel::after {
+  width: 100%;
+}
+
+/* ---------- Right cluster: links · divider · theme ---------- */
+.right {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.divider {
+  width: 1px;
+  height: 1.1rem;
+  margin-inline: 0.45rem;
+  background-color: var(--color-border-subtle);
+}
+
+/* ---------- Centre wordmark ---------- */
+.logo {
   grid-column: 2;
   grid-row: 1;
   justify-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 0;
-  height: var(--chip-height);
-  padding: 0 1.1rem;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  min-height: 2.75rem;
+  padding-inline: 0.5rem;
+  border-radius: 0.5rem;
   color: var(--color-ink);
   text-decoration: none;
-  transition: min-width 0.42s cubic-bezier(0.4, 0, 0.2, 1), padding 0.42s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Monogram state: chip shrinks to the mark */
-.logo[data-compact='true'] {
-  min-width: 4.6rem;
-  padding-inline: 0.7rem;
-}
-
-/* ---------- Nav pills, either side of the logo ---------- */
-.pill {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  height: var(--chip-height);
-  margin: 0;
-  padding: 0.4rem;
-  border-radius: var(--radius-pill);
-  list-style: none;
-  pointer-events: auto;
-}
-
-/* Left pill hugs the logo from the left, right pill from the right */
-.pillLeft {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: end;
-}
-
-.pillRight {
-  grid-column: 3;
-  grid-row: 1;
-  justify-self: start;
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  height: 2.75rem;
-  min-width: 2.75rem;
-  padding-inline: 0.8125rem;
-  border-radius: var(--radius-pill);
-  color: var(--color-muted);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  transition: background-color 0.3s ease, color 0.2s ease, box-shadow 0.3s ease;
-}
-
-.item svg {
-  flex: none;
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-/* Label stays in the DOM (screen readers) but collapses visually */
-.label {
-  display: inline-block;
-  max-width: 0;
-  margin-left: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  opacity: 0;
-  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1), margin-left 0.35s ease, opacity 0.25s ease;
-}
-
-.item:hover {
-  color: var(--color-ink);
-  background-color: color-mix(in srgb, var(--color-ink) 7%, transparent);
-}
-
-.itemActive {
-  color: var(--color-ink);
-  background-color: color-mix(in srgb, var(--color-ink) 13%, transparent);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 2px 10px rgba(0, 0, 0, 0.12);
-}
-
-.itemActive .label {
-  max-width: 6rem;
-  margin-left: 0.75rem;
-  opacity: 1;
-}
-
-/* ---------- Theme toggle (last item) ---------- */
-.themeToggle {
+/* ---------- Icon controls (menu + theme) ---------- */
+.iconButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
+  padding: 0;
   border: 0;
   border-radius: var(--radius-pill);
-  background: transparent;
+  background-color: transparent;
   color: var(--color-muted);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.themeToggle:hover {
+.iconButton:hover {
   color: var(--color-ink);
   background-color: color-mix(in srgb, var(--color-ink) 7%, transparent);
 }
 
-.themeToggle svg {
-  width: 1.25rem;
-  height: 1.25rem;
+.iconButton svg {
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
-/* ---------- Phones: same three-part row, everything shrunk to fit ---------- */
-@media (max-width: 860px) {
+.themeToggle {
+  composes: iconButton;
+}
+
+.menuButton {
+  composes: iconButton;
+  display: none;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  margin-left: -0.375rem;
+  color: var(--color-ink);
+}
+
+/* ---------- Mobile menu ---------- */
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: none;
+  flex-direction: column;
+  padding:
+    calc(var(--header-height) + env(safe-area-inset-top, 0px) + 1.75rem)
+    var(--gutter)
+    calc(2rem + env(safe-area-inset-bottom, 0px));
+  background-color: var(--color-bg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.panel[data-open='true'] {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.panelList {
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.panelItem {
+  border-top: 1px solid var(--color-border-subtle);
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: opacity 0.24s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.panelItem:last-child {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.panel[data-open='true'] .panelItem {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(70ms + var(--i, 0) * 45ms);
+}
+
+.panelLink {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.25rem;
+  padding: clamp(1rem, 3.5vw, 1.35rem) 0.25rem;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 7vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.panelLink:hover,
+.panelLink:focus-visible {
+  padding-left: 0.625rem;
+}
+
+.panelLink[aria-current='location'] {
+  color: var(--color-accent);
+}
+
+.panelIndex {
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Mobile / tablet ---------- */
+@media (max-width: 899px) {
   .header {
-    column-gap: 0.4rem;
+    --header-height: 3.75rem;
   }
 
-  .pill {
-    padding: 0.3rem;
+  .groupLeft,
+  .groupRight,
+  .divider {
+    display: none;
   }
 
-  .pill {
-    gap: 0.15rem;
+  .menuButton {
+    display: inline-flex;
   }
 
-  .logo {
-    min-width: 3.7rem;
-    padding-inline: 0.5rem;
-    font-size: 1rem;
+  .panel {
+    display: flex;
   }
 
-  .item {
-    height: 2.25rem;
-    min-width: 2.25rem;
-    padding-inline: 0.5rem;
-  }
-
-  .item svg {
-    width: 1.125rem;
-    height: 1.125rem;
-  }
-
-  .themeToggle {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-
-  /* No room for the active label here — the fill alone marks the section */
-  .itemActive .label {
-    max-width: 0;
-    margin-left: 0;
-    opacity: 0;
+  .link {
+    font-size: 0.9375rem;
   }
 }
 
-@media (max-width: 380px) {
-  .header {
-    column-gap: 0.2rem;
-  }
-
-  .pill {
-    gap: 0.1rem;
-    padding: 0.25rem;
-  }
-
-  .item {
-    min-width: 1.9rem;
-    padding-inline: 0.35rem;
-  }
-
-  .logo {
-    min-width: 3.2rem;
-    padding-inline: 0.4rem;
-    font-size: 0.9rem;
-  }
-
-  .themeToggle {
-    width: 1.9rem;
-    height: 1.9rem;
+@media (min-width: 900px) {
+  .panel {
+    display: none;
   }
 }

@@ -97,6 +97,7 @@
 
 html {
   scroll-padding-top: 6rem;
+  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   transition: background-color 0.2s ease, color 0.2s ease;
   background-color: var(--color-bg);
@@ -195,6 +196,27 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
     transform: none !important;
+  }
+}
+
+/* Brief colour cross-fade while the theme changes. ThemeToggle adds this
+   class to <html> for the duration of the swap, which keeps components with
+   their own transitions from snapping between palettes. */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 320ms ease, border-color 320ms ease,
+    color 320ms ease, fill 320ms ease, stroke 320ms ease,
+    box-shadow 320ms ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
+    transition: none !important;
   }
 }
 

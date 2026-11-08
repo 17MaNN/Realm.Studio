@@ -1,6 +1,7 @@
 .pageContainer {
   --gutter-shift: 9px;
-  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  /* Clears the fixed site header */
+  padding-top: clamp(5.5rem, 8vw, 7rem);
   padding-bottom: var(--vertical-rhythm);
 }
 
